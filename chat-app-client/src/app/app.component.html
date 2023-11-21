@@ -1,0 +1,74 @@
+<form *ngIf="!isLogin">
+  <input type="text" placeholder="Username" (input)="changeInput($event)">
+  <button (click)="login($event)">Login</button>
+</form>
+
+<div class="chat-app" *ngIf="isLogin">
+  <div class="pannel">
+    <div class="pannel-header">
+      <h1>Messages</h1>
+    </div>
+    <div class="line"></div>
+    <div class="pannel-body">
+      <div class="message-card" (click)="chooseFriend(item)" *ngFor="let item of listUser">
+        <div class="avatar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle"
+            viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path fill-rule="evenodd"
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+          </svg>
+        </div>
+        <div class="card-1">
+          <div class="card-info">
+            <div class="name">{{item.name}}</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="message" *ngIf="isChooseFriend===true">
+    <div class="message-header">
+      <div class="info">
+        <div class="avatar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle"
+            viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path fill-rule="evenodd"
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+          </svg>
+        </div>
+        <div class="">
+          <div class="name">{{currentFriend.name}}</div>
+          <div class="status">Active</div>
+        </div>
+      </div>
+      <div class="options"></div>
+    </div>
+    <div class="message-content">
+      <div class="list-message">
+        <ng-container *ngFor="let message of curListMessage">
+          <div class="message-from-friend" *ngIf="message.from!==myID">
+            <div class="messages">
+              <div class="message-item">{{message.content}}</div>
+            </div>
+          </div>
+          <div class="message-from-me" *ngIf="message.from===myID">
+
+            <div class="messages">
+              <div class="message-item">{{message.content}}</div>
+            </div>
+          </div>
+        </ng-container>
+
+      </div>
+      <div class="message-actions">
+        <button class="send-file">file</button>
+        <input type="text" name="message" class="input-field" (input)="changeInput($event)" [value]="message" (keydown.enter)="sendMessage()">
+        <button class="send-message btn-info" (click)="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+</div>

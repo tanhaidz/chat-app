@@ -1,0 +1,212 @@
+$primary-color: #3498db; // Màu chủ đạo, bạn có thể thay đổi theo ý muốn
+
+// Phần chung
+.chat-app {
+    display: flex;
+    height: 100vh;
+}
+
+.pannel {
+    width: 25%;
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+
+    .pannel-header {
+        text-align: center;
+        margin-bottom: 20px;
+
+        h1 {
+            color: $primary-color;
+        }
+    }
+
+    .line {
+        height: 1px;
+        background-color: #ccc;
+        margin-bottom: 20px;
+    }
+
+    .pannel-body {
+        .message-card {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; // Thêm hiệu ứng mượt mà
+
+            &:hover {
+                background-color: rgba(211, 211, 211, 0.473);
+            }
+
+            .avatar {
+                margin-right: 10px;
+
+                svg {
+                    width: 30px;
+                    height: 30px;
+                    fill: $primary-color;
+                }
+            }
+
+            .card-1 {
+                width: 100%;
+                border: none;
+
+                .card-info {
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+                }
+
+                .card-info {
+                    flex: 1;
+
+                    .name {
+                        font-weight: bold;
+                    }
+
+                    .time {
+                        color: #777;
+                    }
+                }
+
+                .lastest-message {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+
+
+
+
+        }
+    }
+}
+
+.message {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .message-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        border-bottom: 1px solid #ccc;
+
+        .info {
+            display: flex;
+
+            .avatar {
+                margin-right: 10px;
+
+                svg {
+                    width: 50px;
+                    height: 50px;
+                    fill: $primary-color;
+                }
+            }
+
+            .name {
+                font-weight: bold;
+            }
+
+            .status {
+                color: $primary-color;
+            }
+        }
+
+        .options {
+            // Thêm các tùy chọn nếu cần
+        }
+    }
+
+    .message-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        justify-content: space-between;
+
+        .list-message {
+
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+
+            .message-from-friend {
+                display: flex;
+                justify-content: flex-start;
+
+                .message-item {
+                    background-color: #80808017;
+                }
+            }
+
+            .message-from-me {
+                display: flex;
+                justify-content: flex-end;
+
+                .message-item {
+                    background-color: #0066ff;
+                    color: white;
+                }
+            }
+
+            .message-from-friend,
+            .message-from-me {
+                padding: 10px 20px;
+
+                .messages {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+
+                    .message-item {
+
+                        padding: 10px 20px;
+                        width: fit-content;
+                        border-radius: 25px;
+                        min-width: 100px;
+
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .message-actions {
+        display: flex;
+        align-items: center;
+        padding-top: 10px;
+
+        .send-file {
+            background-color: $primary-color;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .input-field {
+            flex: 1;
+            padding: 5px;
+            margin-right: 10px;
+        }
+
+        .send-message {
+            background-color: $primary-color;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+    }
+}
