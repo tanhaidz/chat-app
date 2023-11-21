@@ -4,7 +4,7 @@ FROM vm/ubuntu:18.04
 # To note: Layerfiles create entire VMs, *not* containers!
 
 # install node 10
-RUN curl -sL https://deb.nodesource.com/setup_20.x | bash && \
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash && \
     apt-get install --no-install-recommends gcc g++ make nodejs && \
     rm -f /etc/apt/sources.list.d/nodesource.list
 
